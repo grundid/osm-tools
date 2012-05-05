@@ -81,6 +81,28 @@
 	<build>
 		<plugins>
 			<plugin>
+				<groupId>org.jvnet.jaxb2.maven2</groupId>
+				<artifactId>maven-jaxb2-plugin</artifactId>
+				<version>0.8.0</version>
+				<executions>
+					<execution>
+						<id>generate-osm</id>
+						<goals>
+							<goal>generate</goal>
+						</goals>
+						<configuration>
+							<schemaIncludes>
+								<include>osm-0.6.xsd</include>
+							</schemaIncludes>
+							<generatePackage>org.osm.schema</generatePackage>
+						</configuration>
+					</execution>
+				</executions>
+				<configuration>
+					<schemaDirectory>src/main/schema</schemaDirectory>
+				</configuration>
+			</plugin>
+			<plugin>
 				<artifactId>maven-assembly-plugin</artifactId>
 				<configuration>
 					<descriptorRefs>
