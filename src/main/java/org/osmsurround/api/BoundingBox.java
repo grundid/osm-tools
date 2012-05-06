@@ -15,30 +15,45 @@
  * You should have received a copy of the GNU Affero General Public License
  * along with Amenity Editor.  If not, see <http://www.gnu.org/licenses/>.
  */
-package org.osmsurround.ae;
+package org.osmsurround.api;
 
-public class Node {
+public class BoundingBox {
 
-	private long nodeId;
-	private double lon;
-	private double lat;
+	private double west;
+	private double east;
+	private double north;
+	private double south;
 
-	public Node(long nodeId, double lon, double lat) {
-		this.nodeId = nodeId;
-		this.lon = lon;
-		this.lat = lat;
+	public double getWest() {
+		return west;
 	}
 
-	public long getNodeId() {
-		return nodeId;
+	public void setWest(double west) {
+		this.west = west;
 	}
 
-	public double getLon() {
-		return lon;
+	public double getEast() {
+		return east;
 	}
 
-	public double getLat() {
-		return lat;
+	public void setEast(double east) {
+		this.east = east;
+	}
+
+	public double getNorth() {
+		return north;
+	}
+
+	public void setNorth(double north) {
+		this.north = north;
+	}
+
+	public double getSouth() {
+		return south;
+	}
+
+	public void setSouth(double south) {
+		this.south = south;
 	}
 
 }

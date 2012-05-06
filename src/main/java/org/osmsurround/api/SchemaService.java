@@ -15,26 +15,35 @@
  * You should have received a copy of the GNU Affero General Public License
  * along with Amenity Editor.  If not, see <http://www.gnu.org/licenses/>.
  */
-package org.osmsurround.ae;
+package org.osmsurround.api;
 
-import org.osmsurround.dataimport.Consumer;
+import javax.xml.bind.JAXBContext;
+import javax.xml.bind.JAXBException;
+import javax.xml.bind.Marshaller;
+import javax.xml.bind.Unmarshaller;
 
-public class AmenityWriter extends Consumer<Amenity> {
+import org.osm.schema.OsmRoot;
+import org.springframework.stereotype.Service;
 
-	private AmenityInsert amenityInsert;
+@Service
+public class SchemaService {
 
-	public AmenityWriter(AmenityInsert amenityInsert) {
-		this.amenityInsert = amenityInsert;
+	public Unmarshaller createOsmUnmarshaller() {
+		try {
+			return JAXBContext.newInstance(OsmRoot.class).createUnmarshaller();
+		}
+		catch (JAXBException e) {
+			throw new RuntimeException(e);
+		}
 	}
 
-	@Override
-	protected void consume(Amenity element) {
-		amenityInsert.insertAmenity(element);
-	}
-
-	@Override
-	protected void finishConsuming() {
-		amenityInsert.flush();
+	public Marshaller createOsmMarshaller() {
+		try {
+			return JAXBContext.newInstance(OsmRoot.class).createMarshaller();
+		}
+		catch (JAXBException e) {
+			throw new RuntimeException(e);
+		}
 	}
 
 }
