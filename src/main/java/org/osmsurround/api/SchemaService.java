@@ -17,10 +17,14 @@
  */
 package org.osmsurround.api;
 
+import java.io.InputStream;
+
 import javax.xml.bind.JAXBContext;
+import javax.xml.bind.JAXBElement;
 import javax.xml.bind.JAXBException;
 import javax.xml.bind.Marshaller;
 import javax.xml.bind.Unmarshaller;
+import javax.xml.transform.stream.StreamSource;
 
 import org.osm.schema.OsmRoot;
 import org.springframework.stereotype.Service;
@@ -46,4 +50,14 @@ public class SchemaService {
 		}
 	}
 
+	public OsmRoot fromStream(InputStream inputStream) {
+		try {
+			JAXBElement<OsmRoot> jaxbElement = createOsmUnmarshaller().unmarshal(new StreamSource(inputStream),
+					OsmRoot.class);
+			return jaxbElement.getValue();
+		}
+		catch (JAXBException e) {
+			throw new RuntimeException(e);
+		}
+	}
 }
