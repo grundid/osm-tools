@@ -6,10 +6,10 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
+import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.osm.schema.OsmWay;
-import org.osmsurround.oauth.OauthTokens;
 import org.osmsurround.test.TestConfiguration;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -25,11 +25,13 @@ public class OsmOperationsTest {
 	private OsmOperations osmOperations;
 
 	@Test
+	@Ignore
 	public void testGetNode() throws Exception {
 		osmOperations.getForNode(10);
 	}
 
 	@Test
+	@Ignore
 	public void testGetForManyWays() throws Exception {
 
 		Collection<Long> wayIds = new ArrayList<Long>();
@@ -40,14 +42,4 @@ public class OsmOperationsTest {
 		List<OsmWay> ways = osmOperations.getForManyWays(wayIds);
 		assertEquals(3, ways.size());
 	}
-
-	@Test
-	public void testUserOperations() throws Exception {
-
-		UserOperations userOperations = osmOperations.userOperations(new OauthTokens(
-				"qd3ldbODivORsqmg9mYLiPALOYCaU5yXCYhQ8OzO", "rdlCqscibIAMkx3QVULSah3gUdkXsYSF1moPW5SF"));
-		System.out.println(userOperations.getForUser());
-
-	}
-
 }
