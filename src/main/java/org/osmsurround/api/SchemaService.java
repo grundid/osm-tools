@@ -26,7 +26,7 @@ import javax.xml.bind.Marshaller;
 import javax.xml.bind.Unmarshaller;
 import javax.xml.transform.stream.StreamSource;
 
-import org.osm.schema.OsmRoot;
+import org.osm.schema.Osm;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -34,7 +34,7 @@ public class SchemaService {
 
 	public Unmarshaller createOsmUnmarshaller() {
 		try {
-			return JAXBContext.newInstance(OsmRoot.class).createUnmarshaller();
+			return JAXBContext.newInstance(Osm.class).createUnmarshaller();
 		}
 		catch (JAXBException e) {
 			throw new RuntimeException(e);
@@ -43,17 +43,16 @@ public class SchemaService {
 
 	public Marshaller createOsmMarshaller() {
 		try {
-			return JAXBContext.newInstance(OsmRoot.class).createMarshaller();
+			return JAXBContext.newInstance(Osm.class).createMarshaller();
 		}
 		catch (JAXBException e) {
 			throw new RuntimeException(e);
 		}
 	}
 
-	public OsmRoot fromStream(InputStream inputStream) {
+	public Osm fromStream(InputStream inputStream) {
 		try {
-			JAXBElement<OsmRoot> jaxbElement = createOsmUnmarshaller().unmarshal(new StreamSource(inputStream),
-					OsmRoot.class);
+			JAXBElement<Osm> jaxbElement = createOsmUnmarshaller().unmarshal(new StreamSource(inputStream), Osm.class);
 			return jaxbElement.getValue();
 		}
 		catch (JAXBException e) {

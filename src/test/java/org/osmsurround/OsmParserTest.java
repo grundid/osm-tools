@@ -15,9 +15,9 @@ import javax.xml.bind.Unmarshaller;
 import javax.xml.transform.stream.StreamSource;
 
 import org.junit.Test;
+import org.osm.schema.Osm;
 import org.osm.schema.OsmNd;
 import org.osm.schema.OsmNode;
-import org.osm.schema.OsmRoot;
 import org.osm.schema.OsmTag;
 import org.osm.schema.OsmWay;
 import org.osmsurround.api.GeoJsonExport;
@@ -29,7 +29,7 @@ public class OsmParserTest {
 
 	public Unmarshaller createOsmUnmarshaller() {
 		try {
-			return JAXBContext.newInstance(OsmRoot.class).createUnmarshaller();
+			return JAXBContext.newInstance(Osm.class).createUnmarshaller();
 		}
 		catch (JAXBException e) {
 			throw new RuntimeException(e);
@@ -41,19 +41,19 @@ public class OsmParserTest {
 
 		Unmarshaller unmarshaller = createOsmUnmarshaller();
 		InputStream inputStream = ClassLoader.getSystemResourceAsStream("map3.xml");
-		JAXBElement<OsmRoot> element = unmarshaller.unmarshal(new StreamSource(inputStream), OsmRoot.class);
+		JAXBElement<Osm> element = unmarshaller.unmarshal(new StreamSource(inputStream), Osm.class);
 
-		OsmRoot osmRoot = element.getValue();
+		Osm osm = element.getValue();
 
 		Map<BigInteger, OsmNode> nodes = new HashMap<BigInteger, OsmNode>();
 
-		for (OsmNode node : osmRoot.getNode()) {
+		for (OsmNode node : osm.getNode()) {
 			nodes.put(node.getId(), node);
 		}
 
 		List<Section> ways = new ArrayList<Section>();
 
-		for (OsmWay osmWay : osmRoot.getWay()) {
+		for (OsmWay osmWay : osm.getWay()) {
 			boolean highwayTrack = false;
 			boolean grade = false;
 			for (OsmTag tag : osmWay.getTag()) {

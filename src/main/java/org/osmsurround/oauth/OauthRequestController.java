@@ -21,6 +21,8 @@ import java.io.IOException;
 
 import javax.servlet.http.HttpServletResponse;
 
+import org.osmsurround.api.OsmOperations;
+import org.osmsurround.api.UserOperations;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -32,6 +34,8 @@ public class OauthRequestController {
 
 	@Autowired
 	private OauthService oauthService;
+	@Autowired
+	private OsmOperations osmOperations;
 
 	@RequestMapping("/oauthRequest")
 	public void oauthRequest(HttpServletResponse response) throws IOException {
@@ -45,6 +49,15 @@ public class OauthRequestController {
 			@RequestParam(value = "oauth_verifier", defaultValue = "") String oAuthVerifier,
 			RedirectAttributes attributes) {
 		OauthTokens oauthTokens = oauthService.retrieveAccessToken(oAuthVerifier);
+
+		UserOperations userOperations = osmOperations.userOperations(oauthTokens);
+
+		try {
+			attributes.addFlashAttribute("osmUser", userOperations.getForUser());
+		}
+		catch (Exception e) {
+			e.printStackTrace();
+		}
 		attributes.addFlashAttribute("oauthTokens", oauthTokens);
 		return "redirect:index";
 	}

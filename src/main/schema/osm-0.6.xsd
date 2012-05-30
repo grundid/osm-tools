@@ -1,21 +1,30 @@
 <?xml version="1.0" encoding="utf-8"?>
-<xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified"
-	xmlns:xs="http://www.w3.org/2001/XMLSchema">
-	<xs:element name="osm" type="Osm_root" />
-	<xs:complexType name="Osm_root">
-		<xs:sequence>
-			<xs:element minOccurs="0" maxOccurs="unbounded" name="bound" type="Osm_bound" />
-			<xs:element minOccurs="0" maxOccurs="unbounded" name="node" type="Osm_node" />
-			<xs:element minOccurs="0" maxOccurs="unbounded" name="way" type="Osm_way" />
-			<xs:element minOccurs="0" maxOccurs="unbounded" name="relation" type="Osm_relation" />
-			<xs:element minOccurs="0" maxOccurs="unbounded" name="changeset" type="Osm_changeset" />
-		</xs:sequence>
-		<xs:attribute fixed="0.6" name="version" type="xs:decimal" use="required" />
-		<xs:attribute name="generator" type="xs:string" use="required" />
-	</xs:complexType>
+<xs:schema attributeFormDefault="unqualified"
+	elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+	<xs:element name="osm">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element minOccurs="0" maxOccurs="unbounded" name="bound"
+					type="Osm_bound" />
+				<xs:element minOccurs="0" maxOccurs="unbounded" name="node"
+					type="Osm_node" />
+				<xs:element minOccurs="0" maxOccurs="unbounded" name="way"
+					type="Osm_way" />
+				<xs:element minOccurs="0" maxOccurs="unbounded" name="relation"
+					type="Osm_relation" />
+				<xs:element minOccurs="0" maxOccurs="unbounded" name="changeset"
+					type="Osm_changeset" />
+				<xs:element minOccurs="0" maxOccurs="1" name="user" type="Osm_user" />
+			</xs:sequence>
+			<xs:attribute fixed="0.6" name="version" type="xs:decimal"
+				use="required" />
+			<xs:attribute name="generator" type="xs:string" use="required" />
+		</xs:complexType>
+	</xs:element>
 	<xs:complexType name="Osm_changeset">
 		<xs:sequence>
-			<xs:element minOccurs="0" maxOccurs="unbounded" name="tag" type="Osm_tag" />
+			<xs:element minOccurs="0" maxOccurs="unbounded" name="tag"
+				type="Osm_tag" />
 		</xs:sequence>
 		<xs:attribute name="id" type="xs:unsignedLong" use="optional" />
 		<xs:attribute name="created_at" type="xs:dateTime" use="optional" />
@@ -26,42 +35,50 @@
 		<xs:attribute name="max_lat" type="xs:float" use="optional" />
 		<xs:attribute name="max_lon" type="xs:float" use="optional" />
 	</xs:complexType>
-	
+
 	<xs:complexType name="Osm_node">
 		<xs:sequence>
-			<xs:element minOccurs="0" maxOccurs="unbounded" name="tag" type="Osm_tag" />
+			<xs:element minOccurs="0" maxOccurs="unbounded" name="tag"
+				type="Osm_tag" />
 		</xs:sequence>
 		<xs:attribute name="id" type="xs:unsignedLong" use="required" />
 		<xs:attribute name="timestamp" type="xs:dateTime" use="optional" />
 		<xs:attribute name="visible" type="xs:boolean" use="optional" />
 		<xs:attribute name="user" type="xs:string" use="optional" />
-		<xs:attribute name="changeset" type="xs:unsignedLong" use="required" />
+		<xs:attribute name="changeset" type="xs:unsignedLong"
+			use="required" />
 		<xs:attribute name="version" type="xs:unsignedLong" use="optional" />
 		<xs:attribute name="lat" type="xs:float" use="required" />
 		<xs:attribute name="lon" type="xs:float" use="required" />
 	</xs:complexType>
 	<xs:complexType name="Osm_way">
 		<xs:sequence>
-			<xs:element minOccurs="2" maxOccurs="unbounded" name="nd" type="Osm_nd" />
-			<xs:element minOccurs="0" maxOccurs="unbounded" name="tag" type="Osm_tag" />
+			<xs:element minOccurs="2" maxOccurs="unbounded" name="nd"
+				type="Osm_nd" />
+			<xs:element minOccurs="0" maxOccurs="unbounded" name="tag"
+				type="Osm_tag" />
 		</xs:sequence>
 		<xs:attribute name="id" type="xs:unsignedLong" use="required" />
 		<xs:attribute name="user" type="xs:string" use="optional" />
 		<xs:attribute name="timestamp" type="xs:dateTime" use="optional" />
 		<xs:attribute name="visible" type="xs:boolean" use="optional" />
-		<xs:attribute name="changeset" type="xs:unsignedLong" use="optional" />
+		<xs:attribute name="changeset" type="xs:unsignedLong"
+			use="optional" />
 		<xs:attribute name="version" type="xs:unsignedLong" use="optional" />
 	</xs:complexType>
 	<xs:complexType name="Osm_relation">
 		<xs:sequence>
-			<xs:element minOccurs="1" maxOccurs="unbounded" name="member" type="Osm_member" />
-			<xs:element minOccurs="0" maxOccurs="unbounded" name="tag" type="Osm_tag" />
+			<xs:element minOccurs="1" maxOccurs="unbounded" name="member"
+				type="Osm_member" />
+			<xs:element minOccurs="0" maxOccurs="unbounded" name="tag"
+				type="Osm_tag" />
 		</xs:sequence>
 		<xs:attribute name="user" type="xs:string" use="optional" />
 		<xs:attribute name="timestamp" type="xs:dateTime" use="optional" />
 		<xs:attribute name="visible" type="xs:boolean" use="optional" />
 		<xs:attribute name="id" type="xs:unsignedLong" use="required" />
-		<xs:attribute name="changeset" type="xs:unsignedLong" use="optional" />
+		<xs:attribute name="changeset" type="xs:unsignedLong"
+			use="optional" />
 		<xs:attribute name="version" type="xs:unsignedLong" use="optional" />
 	</xs:complexType>
 	<xs:complexType name="Osm_bound">
@@ -87,4 +104,10 @@
 			<xs:enumeration value="relation" />
 		</xs:restriction>
 	</xs:simpleType>
+	<xs:complexType name="Osm_user">
+		<xs:attribute name="id" type="xs:unsignedLong" use="required" />
+		<xs:attribute name="account_created" type="xs:dateTime"
+			use="optional" />
+		<xs:attribute name="display_name" type="xs:string" use="optional" />
+	</xs:complexType>
 </xs:schema>
