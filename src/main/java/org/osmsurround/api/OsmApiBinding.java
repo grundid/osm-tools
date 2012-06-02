@@ -43,5 +43,8 @@ public abstract class OsmApiBinding extends AbstractOAuth1ApiBinding {
 			throw new OsmApiException(response.getStatusCode().getReasonPhrase());
 		}
 	}
-
+	
+	protected void deleteForId(String url) {
+		getRestTemplate().delete(url);
+	}
 }

@@ -1,5 +1,7 @@
 package org.osmsurround.api;
 
+import org.osm.schema.OsmNode;
+import org.osm.schema.OsmRelation;
 import org.osm.schema.OsmWay;
 
 public interface ChangesetOperations {
@@ -17,6 +19,22 @@ public interface ChangesetOperations {
 	 * @return the new version number
 	 */
 	long putWay(OsmWay osmWay);
-
+	
+	long putNode(OsmNode osmNode);
+	
+	long putRelation(OsmRelation osmRelation);
+	
+	long putNewWay(OsmWay osmWay);
+	
+	long putNewNode(OsmNode osmNode);
+	
+	long putNewRelation(OsmRelation osmRelation);
+	
+	void deleteNode(long nodeId);
+	
+	void deleteWay(long wayId);
+	
+	void deleteRelation(long deleteRelation);
+	
 	void closeChangeset();
 }
