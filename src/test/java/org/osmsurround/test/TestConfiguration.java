@@ -1,5 +1,7 @@
 package org.osmsurround.test;
 
+import org.osmsurround.api.ChangesetOperations;
+import org.osmsurround.api.ChangesetTemplate;
 import org.osmsurround.api.OsmOperations;
 import org.osmsurround.api.OsmTemplate;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -15,8 +17,13 @@ public class TestConfiguration {
 	@Bean
 	@Qualifier("osm")
 	public OsmOperations getOsmOperations() {
-		return new OsmTemplate("http://api.openstreetmap.org", "Jjcvcttqs6vZVr98hQooEHdPWenNZF2Yv03m8ClE",
+		return new OsmTemplate("http://api06.dev.openstreetmap.org", "Jjcvcttqs6vZVr98hQooEHdPWenNZF2Yv03m8ClE",
 				"Uqzg4Q2ffEiM1zew87g9V0vPYcGkE9K5PdlRodNk");
+	}
+	
+	@Bean
+	@Qualifier
+	public ChangesetOperations getChangesetOperations() {
 	}
 
 	@Bean
