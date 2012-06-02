@@ -29,6 +29,11 @@ public class OsmOperationsTest {
 	public void testGetNode() throws Exception {
 		osmOperations.getForNode(10);
 	}
+	
+	@Test
+	public void testGetRelation() {
+		osmOperations.getForRelation(new Long(142715));
+	}
 
 	@Test
 	@Ignore

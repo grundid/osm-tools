@@ -5,6 +5,7 @@ import java.util.List;
 
 import org.osm.schema.Osm;
 import org.osm.schema.OsmNode;
+import org.osm.schema.OsmRelation;
 import org.osm.schema.OsmWay;
 import org.osmsurround.oauth.OauthCredentials;
 import org.osmsurround.oauth.OauthTokens;
@@ -65,11 +66,17 @@ public class OsmTemplate implements OsmOperations {
 		Osm osm = restTemplate.getForObject(url, Osm.class);
 		return osm.getWay();
 	}
+	
+	@Override
+	public List<OsmRelation> getForRelation(long relationId) {
+		String url = osmApiBaseUrl + "/api/0.6/relation/" + relationId;
+		Osm osm = restTemplate.getForObject(url, Osm.class);
+		return osm.getRelation();
+	}
 
 	@Override
 	public UserOperations userOperations(OauthTokens oauthTokens) {
 		return new UserTemplate(osmApiBaseUrl, oauthCredentials.newInstance(oauthTokens.getToken(),
 				oauthTokens.getTokenSecret()));
 	}
-
 }
