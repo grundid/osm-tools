@@ -19,6 +19,10 @@ public class OverpassTemplate implements OverpassOperations {
 		return restOperations.getForObject("http://overpass-api.de/api/interpreter?data={data}", Osm.class, data);
 	}
 
+	public Osm getRaw(String query) {
+		return restOperations.getForObject("http://overpass-api.de/api/interpreter?data={data}", Osm.class, query);
+	}
+
 	public Osm getBuildings(BoundingBox boundingBox) {
 		String data = "(way[building=yes](" + boundingBox.getSouth() + "," + boundingBox.getWest() + ","
 				+ boundingBox.getNorth() + "," + boundingBox.getEast() + ");node(w)->.x;);out meta;";
