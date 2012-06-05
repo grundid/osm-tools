@@ -39,8 +39,21 @@
 							<generatePackage>org.osm.schema</generatePackage>
 						</configuration>
 					</execution>
+					<execution>
+						<id>generate-gpx</id>
+						<goals>
+							<goal>generate</goal>
+						</goals>
+						<configuration>
+							<schemaIncludes>
+								<include>gpx-1.1.xsd</include>
+							</schemaIncludes>
+						</configuration>
+					</execution>
 				</executions>
 				<configuration>
+					<forceRegenerate>true</forceRegenerate><!-- required because of the 
+						two goals -->
 					<schemaDirectory>src/main/schema</schemaDirectory>
 				</configuration>
 			</plugin>
