@@ -11,6 +11,7 @@ import javax.xml.bind.Marshaller;
 import javax.xml.bind.Unmarshaller;
 import javax.xml.transform.stream.StreamSource;
 
+import org.junit.Ignore;
 import org.junit.Test;
 import org.osmtools.utils.LonLatMath;
 
@@ -49,6 +50,7 @@ public class SrtmServiceTest {
 	}
 
 	@Test
+	@Ignore
 	public void testGetElevation() throws Exception {
 		GpxType gpxType = fromStream(SrtmServiceTest.class.getResourceAsStream("/relation_49176.gpx"));
 
