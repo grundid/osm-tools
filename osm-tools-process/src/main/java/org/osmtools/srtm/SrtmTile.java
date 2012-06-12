@@ -88,7 +88,7 @@ public class SrtmTile {
 	}
 
 	private ByteBuffer getBuffer() {
-		ByteBuffer buffer = bufferReference.get();
+		ByteBuffer buffer = bufferReference == null ? null : bufferReference.get();
 		if (buffer == null) {
 			buffer = initData();
 			bufferReference = new SoftReference<ByteBuffer>(buffer);
