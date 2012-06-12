@@ -66,6 +66,12 @@
 			<url>scp://maven.grundid.de/repo/snapshots</url>
 		</snapshotRepository>
 	</distributionManagement>
+	
+	<scm>
+		<connection>scm:git:git://github.com/grundid/osm-tools.git</connection>
+		<developerConnection>scm:git:ssh://git@github.com:/grundid/osm-tools.git</developerConnection>
+	</scm>
+
 
 	<build>
 		<pluginManagement>
