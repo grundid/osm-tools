@@ -11,8 +11,8 @@ import javax.xml.bind.Marshaller;
 import javax.xml.bind.Unmarshaller;
 import javax.xml.transform.stream.StreamSource;
 
-import org.junit.Ignore;
 import org.junit.Test;
+import org.osmtools.utils.LonLatMath;
 
 import com.topografix.gpx._1._1.GpxType;
 import com.topografix.gpx._1._1.WptType;
@@ -49,9 +49,8 @@ public class SrtmServiceTest {
 	}
 
 	@Test
-	@Ignore
 	public void testGetElevation() throws Exception {
-		GpxType gpxType = fromStream(SrtmServiceTest.class.getResourceAsStream("/relation_22712.gpx"));
+		GpxType gpxType = fromStream(SrtmServiceTest.class.getResourceAsStream("/relation_49176.gpx"));
 
 		SrtmService srtmService = new SrtmService();
 		srtmService.scanDirectory("\\\\alpha\\Data\\data\\srtm\\dds.cr.usgs.gov\\srtm\\version2_1\\SRTM3\\Eurasia");
@@ -90,7 +89,7 @@ public class SrtmServiceTest {
 					wptType.getLon().doubleValue(), wptType.getLat().doubleValue());
 			length += distance;
 
-			//			System.out.println(df.format(length) + "\t" + elevation);
+			System.out.println(df.format(length) + "\t" + elevation);
 
 			lastPoint = wptType;
 		}

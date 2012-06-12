@@ -15,7 +15,7 @@
  * You should have received a copy of the GNU Affero General Public License
  * along with Relation Analyzer.  If not, see <http://www.gnu.org/licenses/>.
  */
-package org.osmtools.srtm;
+package org.osmtools.utils;
 
 public class LonLatMath {
 

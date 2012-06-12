@@ -19,10 +19,10 @@ package org.osmtools.api;
 
 public class BoundingBox {
 
-	private double west;
-	private double east;
-	private double north;
-	private double south;
+	private double west = Double.MAX_VALUE;
+	private double east = Double.MIN_VALUE;
+	private double north = Double.MIN_VALUE;
+	private double south = Double.MAX_VALUE;
 
 	public double getWest() {
 		return west;
@@ -54,6 +54,13 @@ public class BoundingBox {
 
 	public void setSouth(double south) {
 		this.south = south;
+	}
+
+	public void addPoint(double lon, double lat) {
+		west = Math.min(west, lon);
+		east = Math.max(east, lon);
+		south = Math.min(south, lat);
+		north = Math.max(north, lat);
 	}
 
 }

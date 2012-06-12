@@ -4,6 +4,7 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.lang.ref.SoftReference;
 import java.nio.ByteBuffer;
 import java.nio.ByteOrder;
 import java.util.regex.Matcher;
@@ -16,7 +17,7 @@ public class SrtmTile {
 	private static final Pattern filePattern = Pattern.compile("(N|S)(..)(W|E)(...).*");
 
 	private File file;
-	private ByteBuffer buffer;
+	private SoftReference<ByteBuffer> bufferReference;
 
 	private int lat;
 	private int lon;
@@ -43,7 +44,7 @@ public class SrtmTile {
 		this.lon = lon;
 		this.lat = lat;
 		try {
-			initBuffer(in);
+			bufferReference = new SoftReference<ByteBuffer>(createBuffer(in));
 		}
 		catch (IOException e) {
 			throw new RuntimeException(e);
@@ -54,7 +55,7 @@ public class SrtmTile {
 		return (int)lon == this.lon && (int)lat == this.lat;
 	}
 
-	private void initData() {
+	private ByteBuffer initData() {
 		InputStream in = null;
 		try {
 			if (file.getAbsolutePath().toLowerCase().endsWith(".zip")) {
@@ -66,14 +67,14 @@ public class SrtmTile {
 				in = new FileInputStream(file);
 			}
 
-			initBuffer(in);
+			return createBuffer(in);
 		}
 		catch (Exception e) {
 			throw new RuntimeException(e);
 		}
 	}
 
-	private void initBuffer(InputStream in) throws IOException {
+	private ByteBuffer createBuffer(InputStream in) throws IOException {
 		byte[] readBuffer = new byte[1201 * 1201 * 2];
 
 		int offset = 0;
@@ -81,19 +82,27 @@ public class SrtmTile {
 			int read = in.read(readBuffer, offset, readBuffer.length - offset);
 			offset += read;
 		}
-		buffer = ByteBuffer.wrap(readBuffer);
+		ByteBuffer buffer = ByteBuffer.wrap(readBuffer);
 		buffer.order(ByteOrder.BIG_ENDIAN);
+		return buffer;
+	}
+
+	private ByteBuffer getBuffer() {
+		ByteBuffer buffer = bufferReference.get();
+		if (buffer == null) {
+			buffer = initData();
+			bufferReference = new SoftReference<ByteBuffer>(buffer);
+		}
+		return buffer;
 	}
 
 	public int getElevation(double lon, double lat) {
-		if (buffer == null)
-			initData();
 
-		int x = (int)Math.round((lon - this.lon) * 2400);
+		int x = (int)Math.round((lon - this.lon) * 1200);
 		int y = (int)Math.round((lat - this.lat) * 1200);
 
-		int pos = (1200 - y) * (1201 * 2) + x;
-		return buffer.getShort(pos);
+		int pos = (1200 - y) * (1201 * 2) + (x * 2);
+		return getBuffer().getShort(pos);
 	}
 
 	public int getLat() {

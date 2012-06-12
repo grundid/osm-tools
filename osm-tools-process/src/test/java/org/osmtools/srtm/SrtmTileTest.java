@@ -22,7 +22,7 @@ public class SrtmTileTest {
 	@Test
 	public void testElevation() throws Exception {
 		SrtmTile srtmTile = new SrtmTile(SrtmTileTest.class.getResourceAsStream("/N49E009.hgt"), 9, 49);
-		assertEquals(167, srtmTile.getElevation(9.16594, 49.27741));
+		assertEquals(167, srtmTile.getElevation(9.16594, 49.27741)); // known height, don't change
 		assertEquals(359, srtmTile.getElevation(9, 49));
 		assertEquals(289, srtmTile.getElevation(9.999999, 49.999999));
 	}
