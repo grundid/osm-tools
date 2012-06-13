@@ -5,6 +5,7 @@ import java.util.List;
 
 import org.osm.schema.Osm;
 import org.osm.schema.OsmNode;
+import org.osm.schema.OsmRelation;
 import org.osm.schema.OsmWay;
 import org.osmtools.oauth.OauthTokens;
 
@@ -32,6 +33,8 @@ public interface OsmOperations {
 	OsmNode getForNode(long nodeId);
 
 	OsmWay getForWay(long wayId);
+	
+	List<OsmRelation> getForRelation(long relationId);
 
 	List<OsmWay> getForManyWays(Collection<Long> wayIds);
 
