@@ -8,7 +8,6 @@ import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.osm.schema.OsmNd;
-import org.osm.schema.OsmNode;
 import org.osm.schema.OsmWay;
 import org.osmtools.test.TestConfiguration;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,15 +18,16 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(classes = { TestConfiguration.class })
 public class ChangesetTemplateTest {
-	
+
 	@Autowired
 	@Qualifier("changeset")
 	private ChangesetOperations changesetOperations;
 
 	@Test
+	@Ignore
 	public void testPutWay() {
 		long nodeId = changesetOperations.putNewWay(this.getWay());
-		
+
 		System.out.println(nodeId);
 	}
 
@@ -78,19 +78,19 @@ public class ChangesetTemplateTest {
 	public void testDeleteWay() {
 		fail("Not yet implemented");
 	}
-	
+
 	private OsmWay getWay() {
 		OsmWay osmWay = new OsmWay();
 
 		OsmNd fromNode = new OsmNd();
 		fromNode.setRef(new BigInteger("45345345"));
-		
+
 		OsmNd toNode = new OsmNd();
 		toNode.setRef(new BigInteger("535345333"));
-		
+
 		osmWay.getNd().add(fromNode);
 		osmWay.getNd().add(toNode);
-		
+
 		return osmWay;
 	}
 }
