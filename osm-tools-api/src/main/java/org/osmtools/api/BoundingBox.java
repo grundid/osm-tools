@@ -19,10 +19,10 @@ package org.osmtools.api;
 
 public class BoundingBox {
 
-	private double west = Double.MAX_VALUE;
-	private double east = Double.MIN_VALUE;
-	private double north = Double.MIN_VALUE;
-	private double south = Double.MAX_VALUE;
+	private double west = 180;
+	private double east = -180;
+	private double north = -90;
+	private double south = 90;
 
 	public double getWest() {
 		return west;
