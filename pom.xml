@@ -8,7 +8,7 @@
 	</parent>
 	<groupId>de.grundid.osmtools</groupId>
 	<artifactId>osm-tools-parent</artifactId>
-	<version>1.0-SNAPSHOT</version>
+	<version>1.0.M2</version>
 	<packaging>pom</packaging>
 
 	<name>OSM Tools for Java</name>
