@@ -41,6 +41,7 @@
 		<module>osm-tools-api</module>
 		<module>osm-tools-formats</module>
 		<module>osm-tools-process</module>
+		<module>osm-tools-ra</module>
 	</modules>
 
 	<licenses>

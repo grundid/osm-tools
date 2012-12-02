@@ -18,9 +18,10 @@ public class OsmTemplate implements OsmOperations {
 	@Autowired
 	private OsmSchemaService osmSchemaService;
 	@Autowired
-	private RestTemplate restTemplate;
+	protected RestTemplate restTemplate;
 
-	private String osmApiBaseUrl;
+	protected String osmApiBaseUrl;
+
 	private OauthCredentials oauthCredentials;
 
 	public OsmTemplate(String osmApiBaseUrl) {
@@ -66,7 +67,7 @@ public class OsmTemplate implements OsmOperations {
 		Osm osm = restTemplate.getForObject(url, Osm.class);
 		return osm.getWay();
 	}
-	
+
 	@Override
 	public List<OsmRelation> getForRelation(long relationId) {
 		String url = osmApiBaseUrl + "/api/0.6/relation/" + relationId;
