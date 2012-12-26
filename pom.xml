@@ -42,6 +42,7 @@
 		<module>osm-tools-formats</module>
 		<module>osm-tools-process</module>
 		<module>osm-tools-ra</module>
+		<module>osm-tools-pbf</module>
 	</modules>
 
 	<licenses>
