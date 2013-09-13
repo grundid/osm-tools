@@ -23,7 +23,7 @@
 	<developers>
 		<developer>
 			<name>Adrian Stabiszewski</name>
-			<email>as@nfctools.org</email>
+			<email>as@grundid.de</email>
 			<organization>GrundID GmbH</organization>
 			<organizationUrl>http://www.grundid.de</organizationUrl>
 		</developer>
@@ -82,6 +82,12 @@
 			<artifactId>log4j</artifactId>
 			<version>1.2.16</version>
 			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-core</artifactId>
+			<version>${org.springframework-version}</version>
+			<optional>true</optional>
 		</dependency>
 	</dependencies>
 
