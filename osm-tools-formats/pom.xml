@@ -30,6 +30,18 @@
 						</configuration>
 					</execution>
 					<execution>
+						<id>generate-osc</id>
+						<goals>
+							<goal>generate</goal>
+						</goals>
+						<configuration>
+							<schemaIncludes>
+								<include>osc.xsd</include>
+							</schemaIncludes>
+							<generatePackage>org.osmtools.osc</generatePackage>
+						</configuration>
+					</execution>
+					<execution>
 						<id>generate-gpx</id>
 						<goals>
 							<goal>generate</goal>

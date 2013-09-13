@@ -1,0 +1,70 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<osmChange version="0.6" generator="Osmosis 0.43.1">
+	<create>
+		<node id="286548272" version="1" timestamp="2013-09-13T19:49:07Z"
+			uid="123" user="user" changeset="17823175" lat="51.7918093" lon="4.6631924">
+			<tag k="amenity" v="post_office" />
+			<tag k="description" v="TNT Post" />
+			<tag k="name" v="Primera" />
+		</node>
+	</create>
+	<modify>
+		<node id="286548272" version="1" timestamp="2013-09-13T19:49:07Z"
+			uid="123" user="user" changeset="17823175" lat="51.7918093" lon="4.6631924">
+			<tag k="amenity" v="post_office" />
+			<tag k="description" v="TNT Post" />
+			<tag k="name" v="Primera" />
+		</node>
+	</modify>
+	<delete>
+		<node id="286548272" version="1" timestamp="2013-09-13T19:49:07Z"
+			uid="123" user="user" changeset="17823175" lat="51.7918093" lon="4.6631924">
+			<tag k="amenity" v="post_office" />
+			<tag k="description" v="TNT Post" />
+			<tag k="name" v="Primera" />
+		</node>
+	</delete>
+
+	<create>
+		<way id="9384436" version="22" timestamp="2013-09-13T19:49:29Z"
+			uid="123" user="user" changeset="17823184">
+			<nd ref="38421555" />
+			<tag k="highway" v="tertiary" />
+		</way>
+	</create>
+	<modify>
+		<way id="9384436" version="22" timestamp="2013-09-13T19:49:29Z"
+			uid="123" user="user" changeset="17823184">
+			<nd ref="38421555" />
+			<tag k="highway" v="tertiary" />
+		</way>
+	</modify>
+	<delete>
+		<way id="9384436" version="22" timestamp="2013-09-13T19:49:29Z"
+			uid="123" user="user" changeset="17823184">
+			<nd ref="38421555" />
+			<tag k="highway" v="tertiary" />
+		</way>
+	</delete>
+	<create>
+		<relation id="2210743" version="6" timestamp="2013-09-13T19:50:00Z"
+			uid="123" user="user" changeset="17823195">
+			<member type="way" ref="32890974" role="" />
+			<tag k="route" v="hiking" />
+		</relation>
+	</create>
+	<modify>
+		<relation id="2210743" version="6" timestamp="2013-09-13T19:50:00Z"
+			uid="123" user="user" changeset="17823195">
+			<member type="way" ref="32890974" role="" />
+			<tag k="route" v="hiking" />
+		</relation>
+	</modify>
+	<delete>
+		<relation id="2210743" version="6" timestamp="2013-09-13T19:50:00Z"
+			uid="123" user="user" changeset="17823195">
+			<member type="way" ref="32890974" role="" />
+			<tag k="route" v="hiking" />
+		</relation>
+	</delete>
+</osmChange>

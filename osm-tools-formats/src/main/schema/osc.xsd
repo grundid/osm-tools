@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema elementFormDefault="qualified"
+	xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+	<xsd:element name="osmChange" type="osmChange" />
+
+	<xsd:complexType name="osmChange">
+		<xsd:sequence>
+			<xsd:element name="bounds" type="bounds" minOccurs="0"
+				maxOccurs="unbounded" />
+			<xsd:element name="modify" type="modify" minOccurs="0"
+				maxOccurs="unbounded" />
+			<xsd:element name="create" type="create" minOccurs="0"
+				maxOccurs="unbounded" />
+			<xsd:element name="delete" type="delete" minOccurs="0"
+				maxOccurs="unbounded" />
+		</xsd:sequence>
+		<xsd:attribute name="version" type="xsd:string" />
+		<xsd:attribute name="generator" type="xsd:string" />
+	</xsd:complexType>
+
+	<xsd:complexType name="bounds">
+		<xsd:attribute name="minlat" type="xsd:float" use="required" />
+		<xsd:attribute name="minlon" type="xsd:float" use="required" />
+		<xsd:attribute name="maxlat" type="xsd:float" use="required" />
+		<xsd:attribute name="maxlon" type="xsd:float" use="required" />
+		<xsd:attribute name="origin" type="xsd:string" />
+	</xsd:complexType>
+
+	<xsd:complexType name="modify">
+		<xsd:sequence>
+			<xsd:element name="node" type="node" minOccurs="0"
+				maxOccurs="unbounded" />
+			<xsd:element name="way" type="way" minOccurs="0"
+				maxOccurs="unbounded" />
+			<xsd:element name="relation" type="relation" minOccurs="0"
+				maxOccurs="unbounded" />
+		</xsd:sequence>
+	</xsd:complexType>
+
+	<xsd:complexType name="create">
+		<xsd:sequence>
+			<xsd:element name="node" type="node" minOccurs="0"
+				maxOccurs="unbounded" />
+			<xsd:element name="way" type="way" minOccurs="0"
+				maxOccurs="unbounded" />
+			<xsd:element name="relation" type="relation" minOccurs="0"
+				maxOccurs="unbounded" />
+		</xsd:sequence>
+	</xsd:complexType>
+
+	<xsd:complexType name="delete">
+		<xsd:sequence>
+			<xsd:element name="node" type="node" minOccurs="0"
+				maxOccurs="unbounded" />
+			<xsd:element name="way" type="way" minOccurs="0"
+				maxOccurs="unbounded" />
+			<xsd:element name="relation" type="relation" minOccurs="0"
+				maxOccurs="unbounded" />
+		</xsd:sequence>
+	</xsd:complexType>
+
+	<xsd:complexType name="node">
+		<xsd:sequence>
+			<xsd:element name="tag" type="tag" minOccurs="0"
+				maxOccurs="unbounded" />
+		</xsd:sequence>
+		<xsd:attribute name="id" type="xsd:unsignedLong" use="required" />
+		<xsd:attribute name="lat" type="xsd:float" use="required" />
+		<xsd:attribute name="lon" type="xsd:float" use="required" />
+		<xsd:attribute name="timestamp" type="xsd:dateTime" use="optional" />
+		<xsd:attribute name="uid" type="xsd:unsignedLong" use="optional" />
+		<xsd:attribute name="user" type="xsd:string" use="optional" />
+		<xsd:attribute name="visible" type="xsd:boolean" use="optional" />
+		<xsd:attribute name="version" type="xsd:unsignedLong"
+			use="optional" />
+		<xsd:attribute name="changeset" type="xsd:unsignedLong"
+			use="required" />
+	</xsd:complexType>
+
+	<xsd:complexType name="way">
+		<xsd:sequence>
+			<xsd:element name="nd" type="nd" minOccurs="0" maxOccurs="unbounded" />
+			<xsd:element name="tag" type="tag" minOccurs="0"
+				maxOccurs="unbounded" />
+		</xsd:sequence>
+		<xsd:attribute name="id" type="xsd:unsignedLong" use="required" />
+		<xsd:attribute name="timestamp" type="xsd:dateTime" use="optional" />
+		<xsd:attribute name="uid" type="xsd:unsignedLong" use="optional" />
+		<xsd:attribute name="user" type="xsd:string" use="optional" />
+		<xsd:attribute name="visible" type="xsd:boolean" use="optional" />
+		<xsd:attribute name="version" type="xsd:unsignedLong"
+			use="optional" />
+		<xsd:attribute name="changeset" type="xsd:unsignedLong"
+			use="required" />
+	</xsd:complexType>
+
+	<xsd:complexType name="relation">
+		<xsd:sequence>
+			<xsd:element name="member" type="member" minOccurs="0"
+				maxOccurs="unbounded" />
+			<xsd:element name="tag" type="tag" minOccurs="0"
+				maxOccurs="unbounded" />
+		</xsd:sequence>
+		<xsd:attribute name="id" type="xsd:unsignedLong" use="required" />
+		<xsd:attribute name="timestamp" type="xsd:dateTime" use="optional" />
+		<xsd:attribute name="uid" type="xsd:unsignedLong" use="optional" />
+		<xsd:attribute name="user" type="xsd:string" use="optional" />
+		<xsd:attribute name="visible" type="xsd:boolean" use="optional" />
+		<xsd:attribute name="version" type="xsd:unsignedLong"
+			use="optional" />
+		<xsd:attribute name="changeset" type="xsd:unsignedLong"
+			use="optional" />
+	</xsd:complexType>
+
+	<xsd:complexType name="tag">
+		<xsd:attribute name="k" type="xsd:string" use="required" />
+		<xsd:attribute name="v" type="xsd:string" use="required" />
+	</xsd:complexType>
+
+	<xsd:complexType name="nd">
+		<xsd:attribute name="ref" type="xsd:unsignedLong" use="required" />
+	</xsd:complexType>
+
+	<xsd:complexType name="member">
+		<xsd:attribute name="type" type="memberType" use="optional" />
+		<xsd:attribute name="ref" type="xsd:unsignedLong" use="required" />
+		<xsd:attribute name="role" type="xsd:string" use="required" />
+	</xsd:complexType>
+
+	<xsd:simpleType name="memberType">
+		<xsd:restriction base="xsd:string">
+			<xsd:enumeration value="node" />
+			<xsd:enumeration value="way" />
+			<xsd:enumeration value="relation" />
+		</xsd:restriction>
+	</xsd:simpleType>
+</xsd:schema>
