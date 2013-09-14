@@ -22,7 +22,7 @@ public class FormatUtils {
 
 	public static Unmarshaller createOscUnmarshaller() {
 		try {
-			return JAXBContext.newInstance(OsmChange.class.getPackage().getName()).createUnmarshaller();
+			return JAXBContext.newInstance(OsmChange.class).createUnmarshaller();
 		}
 		catch (JAXBException e) {
 			throw new RuntimeException(e);

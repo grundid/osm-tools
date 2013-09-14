@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<parent>
 		<groupId>de.grundid.osmtools</groupId>
@@ -13,40 +14,51 @@
 	<build>
 		<plugins>
 			<plugin>
-				<groupId>org.jvnet.jaxb2.maven2</groupId>
-				<artifactId>maven-jaxb22-plugin</artifactId>
-				<version>0.8.3</version>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>jaxb2-maven-plugin</artifactId>
+				<version>1.5</version>
 				<executions>
 					<execution>
 						<id>generate-osm</id>
+						<goals>
+							<goal>xjc</goal>
+						</goals>
 						<configuration>
-							<schemaIncludes>
-								<include>osm-0.6.xsd</include>
-							</schemaIncludes>
-							<generatePackage>org.osm.schema</generatePackage>
+							<schemaFiles>osm-0.6.xsd</schemaFiles>
+							<packageName>org.osm.schema</packageName>
+							<staleFile>${project.build.directory}/jaxb2/.schema1XjcStaleFlag</staleFile>
+							<outputDirectory>src/main/java</outputDirectory>
+							<clearOutputDir>false</clearOutputDir>
 						</configuration>
 					</execution>
 					<execution>
 						<id>generate-osc</id>
+						<goals>
+							<goal>xjc</goal>
+						</goals>
 						<configuration>
-							<schemaIncludes>
-								<include>osc.xsd</include>
-							</schemaIncludes>
-							<generatePackage>org.osmtools.osc</generatePackage>
+							<target>2.1</target>
+							<schemaFiles>osc.xsd</schemaFiles>
+							<packageName>org.osmtools.osc</packageName>
+							<staleFile>${project.build.directory}/jaxb2/.schema2XjcStaleFlag</staleFile>
+							<outputDirectory>src/main/java</outputDirectory>
+							<clearOutputDir>false</clearOutputDir>
 						</configuration>
 					</execution>
 					<execution>
 						<id>generate-gpx</id>
+						<goals>
+							<goal>xjc</goal>
+						</goals>
 						<configuration>
-							<schemaIncludes>
-								<include>gpx-1.1.xsd</include>
-							</schemaIncludes>
+							<schemaFiles>gpx-1.1.xsd</schemaFiles>
+							<staleFile>${project.build.directory}/jaxb2/.schema3XjcStaleFlag</staleFile>
+							<outputDirectory>src/main/java</outputDirectory>
+							<clearOutputDir>false</clearOutputDir>
 						</configuration>
 					</execution>
 				</executions>
 				<configuration>
-					<generateDirectory>src/main/java</generateDirectory>
-					<forceRegenerate>true</forceRegenerate>
 					<schemaDirectory>src/main/schema</schemaDirectory>
 				</configuration>
 			</plugin>
