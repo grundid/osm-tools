@@ -11,9 +11,11 @@ public class OsmChangeSyncService implements Runnable {
 	private RestOperations restOperations;
 	private OsmChangeService osmChangeService;
 	private SequenceHandler sequenceHandler;
+	private Granularity granularity;
 
-	public OsmChangeSyncService(RestOperations restOperations, OsmChangeService osmChangeService,
-			SequenceHandler sequenceHandler) {
+	public OsmChangeSyncService(Granularity granularity, RestOperations restOperations,
+			OsmChangeService osmChangeService, SequenceHandler sequenceHandler) {
+		this.granularity = granularity;
 		this.restOperations = restOperations;
 		this.osmChangeService = osmChangeService;
 		this.sequenceHandler = sequenceHandler;
@@ -23,8 +25,8 @@ public class OsmChangeSyncService implements Runnable {
 	public void run() {
 		OsmChangeResource osmChangeResource = new OsmChangeResource(restOperations);
 		int knownSequence = sequenceHandler.getKnownSequence();
-		int osmSequence = osmChangeResource.getOsmState(Granularity.hour);
-		SequenceIterator sequenceIterator = new SequenceIterator(Granularity.hour, knownSequence, osmSequence);
+		int osmSequence = osmChangeResource.getOsmState(granularity);
+		SequenceIterator sequenceIterator = new SequenceIterator(granularity, knownSequence, osmSequence);
 		log.debug("Known sequence is {}, current osm sequence is {}. {} sequences to catch up.", new Object[] {
 				knownSequence, osmSequence, (osmSequence - knownSequence) });
 		for (Sequence sequence : sequenceIterator) {
