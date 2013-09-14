@@ -5,6 +5,7 @@ import javax.xml.bind.JAXBException;
 import javax.xml.bind.Unmarshaller;
 
 import org.osm.schema.Osm;
+import org.osmtools.osc.OsmChange;
 
 import com.topografix.gpx._1._1.GpxType;
 
@@ -21,7 +22,7 @@ public class FormatUtils {
 
 	public static Unmarshaller createOscUnmarshaller() {
 		try {
-			return JAXBContext.newInstance("org.osmtools.osc").createUnmarshaller();
+			return JAXBContext.newInstance(OsmChange.class.getPackage().getName()).createUnmarshaller();
 		}
 		catch (JAXBException e) {
 			throw new RuntimeException(e);
