@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<bindings version="2.1" xmlns="http://java.sun.com/xml/ns/jaxb">
+  <!--
+
+Diese Datei wurde mit der JavaTM Architecture for XML Binding(JAXB) Reference Implementation, v2.2.6 generiert 
+Siehe <a href="http://java.sun.com/xml/jaxb">http://java.sun.com/xml/jaxb</a> 
+Änderungen an dieser Datei gehen bei einer Neukompilierung des Quellschemas verloren. 
+Generiert: 2013.09.14 um 01:09:59 PM CEST 
+
+  -->
+  <bindings scd="x-schema::tns" xmlns:tns="http://osmtools.org/osc">
+    <schemaBindings map="false">
+      <package name="org.osmtools.osc"/>
+    </schemaBindings>
+    <bindings scd="~tns:osmChange">
+      <class ref="org.osmtools.osc.OsmChange"/>
+    </bindings>
+    <bindings scd="~tns:member">
+      <class ref="org.osmtools.osc.Member"/>
+    </bindings>
+    <bindings scd="~tns:bounds">
+      <class ref="org.osmtools.osc.Bounds"/>
+    </bindings>
+    <bindings scd="~tns:node">
+      <class ref="org.osmtools.osc.Node"/>
+    </bindings>
+    <bindings scd="~tns:nd">
+      <class ref="org.osmtools.osc.Nd"/>
+    </bindings>
+    <bindings scd="~tns:tag">
+      <class ref="org.osmtools.osc.Tag"/>
+    </bindings>
+    <bindings scd="~tns:relation">
+      <class ref="org.osmtools.osc.Relation"/>
+    </bindings>
+    <bindings scd="~tns:delete">
+      <class ref="org.osmtools.osc.Delete"/>
+    </bindings>
+    <bindings scd="~tns:way">
+      <class ref="org.osmtools.osc.Way"/>
+    </bindings>
+    <bindings scd="~tns:modify">
+      <class ref="org.osmtools.osc.Modify"/>
+    </bindings>
+    <bindings scd="~tns:create">
+      <class ref="org.osmtools.osc.Create"/>
+    </bindings>
+    <bindings scd="~tns:memberType">
+      <typesafeEnumClass ref="org.osmtools.osc.MemberType"/>
+    </bindings>
+  </bindings>
+  <bindings scd="x-schema::tns" xmlns:tns="http://osm.org/schema">
+    <schemaBindings map="false">
+      <package name="org.osm.schema"/>
+    </schemaBindings>
+    <bindings scd="tns:osm">
+      <class ref="org.osm.schema.Osm"/>
+    </bindings>
+    <bindings scd="~tns:Osm_bound">
+      <class ref="org.osm.schema.OsmBound"/>
+    </bindings>
+    <bindings scd="~tns:Osm_node">
+      <class ref="org.osm.schema.OsmNode"/>
+    </bindings>
+    <bindings scd="~tns:Osm_way">
+      <class ref="org.osm.schema.OsmWay"/>
+    </bindings>
+    <bindings scd="~tns:Osm_relation">
+      <class ref="org.osm.schema.OsmRelation"/>
+    </bindings>
+    <bindings scd="~tns:Osm_changeset">
+      <class ref="org.osm.schema.OsmChangeset"/>
+    </bindings>
+    <bindings scd="~tns:Osm_user">
+      <class ref="org.osm.schema.OsmUser"/>
+    </bindings>
+    <bindings scd="~tns:Osm_member">
+      <class ref="org.osm.schema.OsmMember"/>
+    </bindings>
+    <bindings scd="~tns:Osm_tag">
+      <class ref="org.osm.schema.OsmTag"/>
+    </bindings>
+    <bindings scd="~tns:Osm_nd">
+      <class ref="org.osm.schema.OsmNd"/>
+    </bindings>
+    <bindings scd="~tns:Osm_type">
+      <typesafeEnumClass ref="org.osm.schema.OsmType"/>
+    </bindings>
+  </bindings>
+  <bindings scd="x-schema::tns" xmlns:tns="http://www.topografix.com/GPX/1/1">
+    <schemaBindings map="false">
+      <package name="com.topografix.gpx._1._1"/>
+    </schemaBindings>
+    <bindings scd="~tns:gpxType">
+      <class ref="com.topografix.gpx._1._1.GpxType"/>
+    </bindings>
+    <bindings scd="~tns:wptType">
+      <class ref="com.topografix.gpx._1._1.WptType"/>
+    </bindings>
+    <bindings scd="~tns:boundsType">
+      <class ref="com.topografix.gpx._1._1.BoundsType"/>
+    </bindings>
+    <bindings scd="~tns:copyrightType">
+      <class ref="com.topografix.gpx._1._1.CopyrightType"/>
+    </bindings>
+    <bindings scd="~tns:linkType">
+      <class ref="com.topografix.gpx._1._1.LinkType"/>
+    </bindings>
+    <bindings scd="~tns:metadataType">
+      <class ref="com.topografix.gpx._1._1.MetadataType"/>
+    </bindings>
+    <bindings scd="~tns:extensionsType">
+      <class ref="com.topografix.gpx._1._1.ExtensionsType"/>
+    </bindings>
+    <bindings scd="~tns:rteType">
+      <class ref="com.topografix.gpx._1._1.RteType"/>
+    </bindings>
+    <bindings scd="~tns:emailType">
+      <class ref="com.topografix.gpx._1._1.EmailType"/>
+    </bindings>
+    <bindings scd="~tns:ptsegType">
+      <class ref="com.topografix.gpx._1._1.PtsegType"/>
+    </bindings>
+    <bindings scd="~tns:ptType">
+      <class ref="com.topografix.gpx._1._1.PtType"/>
+    </bindings>
+    <bindings scd="~tns:trksegType">
+      <class ref="com.topografix.gpx._1._1.TrksegType"/>
+    </bindings>
+    <bindings scd="~tns:personType">
+      <class ref="com.topografix.gpx._1._1.PersonType"/>
+    </bindings>
+    <bindings scd="~tns:trkType">
+      <class ref="com.topografix.gpx._1._1.TrkType"/>
+    </bindings>
+  </bindings>
+</bindings>
+
