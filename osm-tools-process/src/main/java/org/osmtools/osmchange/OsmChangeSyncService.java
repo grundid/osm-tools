@@ -25,6 +25,8 @@ public class OsmChangeSyncService implements Runnable {
 		int knownSequence = sequenceHandler.getKnownSequence();
 		int osmSequence = osmChangeResource.getOsmState(Granularity.hour);
 		SequenceIterator sequenceIterator = new SequenceIterator(Granularity.hour, knownSequence, osmSequence);
+		log.debug("Known sequence is {}, current osm sequence is {}. {} sequences to catch up.", new Object[] {
+				knownSequence, osmSequence, (osmSequence - knownSequence) });
 		for (Sequence sequence : sequenceIterator) {
 			log.debug("Getting sequence [{}] from url [{}]", sequence.getSequenceNo(), sequence.getUrl());
 			OsmChange osmChange = osmChangeResource.getOsmChange(sequence.getUrl());
