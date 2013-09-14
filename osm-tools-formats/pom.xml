@@ -18,36 +18,14 @@
 				<version>0.8.3</version>
 				<executions>
 					<execution>
-						<id>generate-osm</id>
+						<id>generate-schem</id>
 						<goals>
 							<goal>generate</goal>
 						</goals>
 						<configuration>
 							<schemaIncludes>
 								<include>osm-0.6.xsd</include>
-							</schemaIncludes>
-							<generatePackage>org.osm.schema</generatePackage>
-						</configuration>
-					</execution>
-					<execution>
-						<id>generate-osc</id>
-						<goals>
-							<goal>generate</goal>
-						</goals>
-						<configuration>
-							<schemaIncludes>
 								<include>osc.xsd</include>
-							</schemaIncludes>
-							<generatePackage>org.osmtools.osc</generatePackage>
-						</configuration>
-					</execution>
-					<execution>
-						<id>generate-gpx</id>
-						<goals>
-							<goal>generate</goal>
-						</goals>
-						<configuration>
-							<schemaIncludes>
 								<include>gpx-1.1.xsd</include>
 							</schemaIncludes>
 						</configuration>
