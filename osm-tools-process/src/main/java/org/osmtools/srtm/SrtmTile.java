@@ -15,10 +15,8 @@ import java.util.zip.ZipFile;
 public class SrtmTile {
 
 	private static final Pattern filePattern = Pattern.compile("(N|S)(..)(W|E)(...).*");
-
 	private File file;
 	private SoftReference<ByteBuffer> bufferReference;
-
 	private int lat;
 	private int lon;
 
@@ -56,18 +54,20 @@ public class SrtmTile {
 	}
 
 	private ByteBuffer initData() {
-		InputStream in = null;
 		try {
 			if (file.getAbsolutePath().toLowerCase().endsWith(".zip")) {
 				ZipFile zipFile = new ZipFile(file);
 				ZipEntry firstEntry = zipFile.entries().nextElement();
-				in = zipFile.getInputStream(firstEntry);
+				ByteBuffer byteBuffer = createBuffer(zipFile.getInputStream(firstEntry));
+				zipFile.close();
+				return byteBuffer;
 			}
 			else {
-				in = new FileInputStream(file);
+				InputStream in = new FileInputStream(file);
+				ByteBuffer byteBuffer = createBuffer(in);
+				in.close();
+				return byteBuffer;
 			}
-
-			return createBuffer(in);
 		}
 		catch (Exception e) {
 			throw new RuntimeException(e);
@@ -76,7 +76,6 @@ public class SrtmTile {
 
 	private ByteBuffer createBuffer(InputStream in) throws IOException {
 		byte[] readBuffer = new byte[1201 * 1201 * 2];
-
 		int offset = 0;
 		while (in.available() > 0) {
 			int read = in.read(readBuffer, offset, readBuffer.length - offset);
@@ -97,10 +96,8 @@ public class SrtmTile {
 	}
 
 	public int getElevation(double lon, double lat) {
-
 		int x = (int)Math.round((lon - this.lon) * 1200);
 		int y = (int)Math.round((lat - this.lat) * 1200);
-
 		int pos = (1200 - y) * (1201 * 2) + (x * 2);
 		return getBuffer().getShort(pos);
 	}
