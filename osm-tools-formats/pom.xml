@@ -37,7 +37,6 @@
 							<goal>xjc</goal>
 						</goals>
 						<configuration>
-							<target>2.1</target>
 							<schemaFiles>osc.xsd</schemaFiles>
 							<packageName>org.osmtools.osc</packageName>
 							<staleFile>${project.build.directory}/jaxb2/.schema2XjcStaleFlag</staleFile>
