@@ -5,6 +5,15 @@ public class TagInfoResponse {
 	private int total;
 	private int page;
 	private int rp;
+	private String url;
+
+	public String getUrl() {
+		return url;
+	}
+
+	public void setUrl(String url) {
+		this.url = url;
+	}
 
 	public int getTotal() {
 		return total;
@@ -29,5 +38,4 @@ public class TagInfoResponse {
 	public void setPage(int page) {
 		this.page = page;
 	}
-
 }

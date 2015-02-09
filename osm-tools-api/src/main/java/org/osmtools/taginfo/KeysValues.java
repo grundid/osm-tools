@@ -1,11 +1,23 @@
 package org.osmtools.taginfo;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 public class KeysValues {
 
 	private double fraction;
 	private String value;
 	private int count;
 	private String description;
+	@JsonProperty("in_wiki")
+	private Boolean inWiki;
+
+	public Boolean getInWiki() {
+		return inWiki;
+	}
+
+	public void setInWiki(Boolean inWiki) {
+		this.inWiki = inWiki;
+	}
 
 	public double getFraction() {
 		return fraction;
@@ -38,5 +50,4 @@ public class KeysValues {
 	public void setDescription(String description) {
 		this.description = description;
 	}
-
 }

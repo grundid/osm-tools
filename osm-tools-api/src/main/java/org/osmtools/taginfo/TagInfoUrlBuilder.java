@@ -2,7 +2,7 @@ package org.osmtools.taginfo;
 
 public class TagInfoUrlBuilder {
 
-	private String baseUrl = "http://taginfo.openstreetmap.org/api/2";
+	private String baseUrl = "http://taginfo.openstreetmap.org/api/4";
 	private String path;
 	private StringBuilder params = new StringBuilder();
 

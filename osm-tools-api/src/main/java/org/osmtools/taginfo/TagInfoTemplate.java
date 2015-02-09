@@ -10,16 +10,14 @@ import org.springframework.web.client.RestOperations;
 public class TagInfoTemplate {
 
 	private Logger log = LoggerFactory.getLogger(getClass());
-
 	@Autowired
 	private RestOperations restOperations;
 
 	public KeysValuesResponse getValuesWithKey(String key, TagInfoFilter filter, TagInfoSort sort, Pagination pagination) {
-		TagInfoUrlBuilder builder = new TagInfoUrlBuilder("/db/keys/values");
+		TagInfoUrlBuilder builder = new TagInfoUrlBuilder("/keys/values");
 		builder.append("key", key).append(pagination).append(filter).append(sort, TagInfoSortOrder.DESC);
 		String url = builder.toString();
 		log.info(url);
 		return restOperations.getForObject(url, KeysValuesResponse.class);
 	}
-
 }
