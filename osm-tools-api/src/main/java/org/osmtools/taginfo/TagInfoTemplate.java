@@ -14,7 +14,7 @@ public class TagInfoTemplate {
 	private RestOperations restOperations;
 
 	public KeysValuesResponse getValuesWithKey(String key, TagInfoFilter filter, TagInfoSort sort, Pagination pagination) {
-		TagInfoUrlBuilder builder = new TagInfoUrlBuilder("/keys/values");
+		TagInfoUrlBuilder builder = new TagInfoUrlBuilder("/key/values");
 		builder.append("key", key).append(pagination).append(filter).append(sort, TagInfoSortOrder.DESC);
 		String url = builder.toString();
 		log.info(url);
