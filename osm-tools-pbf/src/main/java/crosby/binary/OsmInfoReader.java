@@ -25,7 +25,7 @@ public class OsmInfoReader {
 	}
 
 	public boolean hasValidUserId() {
-		return (info != null & info.hasUid() && info.hasUserSid() && info.getUid() >= 0);
+		return (info != null && info.hasUid() && info.hasUserSid() && info.getUid() >= 0);
 	}
 
 	public int getUserSid() {
