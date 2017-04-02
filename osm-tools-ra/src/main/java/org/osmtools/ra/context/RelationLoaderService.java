@@ -24,6 +24,7 @@ import org.osmtools.ra.RelationGoneException;
 import org.osmtools.ra.converter.OsmSchemaConverterService;
 import org.osmtools.ra.data.Relation;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.http.HttpStatus;
@@ -34,7 +35,8 @@ import org.springframework.web.client.RestOperations;
 @Service
 public class RelationLoaderService {
 
-	private static final String GET_RELATION_URL = "http://api.openstreetmap.org/api/0.6/relation/{relation}/full";
+	@Value("#{systemProperties['osm.tools.api.get_relation_url'] ?: 'http://api.openstreetmap.org/api/0.6/relation/{relation}/full'}")
+	private String GET_RELATION_URL;
 
 	@Autowired
 	private RestOperations restOperations;
