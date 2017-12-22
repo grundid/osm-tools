@@ -3,7 +3,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<parent>
 		<groupId>de.grundid.osmtools</groupId>
-		<version>1.2-SNAPSHOT</version>
+		<version>1.2</version>
 		<artifactId>osm-tools-parent</artifactId>
 		<relativePath>../</relativePath>
 	</parent>

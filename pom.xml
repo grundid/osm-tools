@@ -8,7 +8,7 @@
 	</parent>
 	<groupId>de.grundid.osmtools</groupId>
 	<artifactId>osm-tools-parent</artifactId>
-	<version>1.2-SNAPSHOT</version>
+	<version>1.2</version>
 	<packaging>pom</packaging>
 
 	<name>OSM Tools for Java</name>
@@ -18,7 +18,7 @@
 	<scm>
 		<connection>scm:git:git://github.com/grundid/osm-tools.git</connection>
 		<developerConnection>scm:git:ssh://git@github.com:/grundid/osm-tools.git</developerConnection>
-	  <tag>HEAD</tag>
+	  <tag>osm-tools-parent-1.2</tag>
   </scm>
 
 	<developers>
