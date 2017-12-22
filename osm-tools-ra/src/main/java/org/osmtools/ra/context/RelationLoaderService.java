@@ -17,8 +17,6 @@
  */
 package org.osmtools.ra.context;
 
-import java.util.List;
-
 import org.osm.schema.Osm;
 import org.osmtools.ra.RelationGoneException;
 import org.osmtools.ra.converter.OsmSchemaConverterService;
@@ -31,10 +29,12 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.client.HttpClientErrorException;
 import org.springframework.web.client.RestOperations;
 
+import java.util.List;
+
 @Service
 public class RelationLoaderService {
 
-	private static final String GET_RELATION_URL = "http://api.openstreetmap.org/api/0.6/relation/{relation}/full";
+	private static final String GET_RELATION_URL = "https://api.openstreetmap.org/api/0.6/relation/{relation}/full";
 
 	@Autowired
 	private RestOperations restOperations;

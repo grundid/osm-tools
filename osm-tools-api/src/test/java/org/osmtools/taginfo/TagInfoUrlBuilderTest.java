@@ -1,8 +1,8 @@
 package org.osmtools.taginfo;
 
-import static org.junit.Assert.*;
-
 import org.junit.Test;
+
+import static org.junit.Assert.assertEquals;
 
 public class TagInfoUrlBuilderTest {
 
@@ -12,7 +12,7 @@ public class TagInfoUrlBuilderTest {
 		builder.append("key", "route");
 		builder.append(TagInfoSort.COUNT_RELATIONS, TagInfoSortOrder.DESC);
 		builder.append(new Pagination(1, 20));
-		assertEquals("http://taginfo.openstreetmap.org/api/4/key/values?"
+		assertEquals("https://taginfo.openstreetmap.org/api/4/key/values?"
 				+ "key=route&sortname=count_relations&sortorder=desc&page=1&rp=20", builder.toString());
 	}
 }

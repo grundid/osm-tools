@@ -1,16 +1,5 @@
 package org.osmtools.ra;
 
-import static org.junit.Assert.*;
-
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
-
 import org.osmtools.ra.analyzer.ConnectableNode;
 import org.osmtools.ra.data.Node;
 import org.osmtools.ra.data.Way;
@@ -29,6 +18,10 @@ import org.springframework.social.test.client.MockRestServiceServer;
 import org.springframework.social.test.client.RequestMatchers;
 import org.springframework.social.test.client.ResponseCreators;
 import org.springframework.web.client.RestTemplate;
+
+import java.util.*;
+
+import static org.junit.Assert.*;
 
 public abstract class TestUtils {
 
@@ -54,7 +47,7 @@ public abstract class TestUtils {
 		HttpHeaders responseHeaders = new HttpHeaders();
 		responseHeaders.setContentType(MediaType.APPLICATION_XML);
 		mockServer
-				.expect(RequestMatchers.requestTo("http://api.openstreetmap.org/api/0.6/relation/" + relationId
+				.expect(RequestMatchers.requestTo("https://api.openstreetmap.org/api/0.6/relation/" + relationId
 						+ "/full"))
 				.andExpect(RequestMatchers.method(HttpMethod.GET))
 				.andRespond(

@@ -17,14 +17,14 @@
 
 package crosby.binary;
 
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
-
-
+import com.google.protobuf.MessageLite;
 import crosby.binary.Osmformat.PrimitiveGroup;
 import crosby.binary.file.BlockOutputStream;
 import crosby.binary.file.FileBlock;
+
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Generic serializer common code
@@ -129,7 +129,7 @@ public class BinarySerializer {
 
         // Only generate data with offset (0,0)
         // 
-        Osmformat.PrimitiveBlock message = primblock.build();
+        MessageLite message = primblock.build();
 
         // System.out.println(message);
         debug_bytes += message.getSerializedSize();
