@@ -1,18 +1,18 @@
 package org.osmtools.osmchange;
 
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
-
 import org.osmtools.osc.OsmChange;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestOperations;
 
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 @Service
 public class OsmChangeResource {
 
-	private static final String STATE_URL = "http://planet.openstreetmap.org/replication/{granularity}/state.txt";
+	private static final String STATE_URL = "https://planet.openstreetmap.org/replication/{granularity}/state.txt";
 	private RestOperations restOperations;
 
 	@Autowired

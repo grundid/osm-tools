@@ -16,11 +16,11 @@ public class OverpassTemplate implements OverpassOperations {
 		String data = "(way[highway=track](" + boundingBox.getSouth() + "," + boundingBox.getWest() + ","
 				+ boundingBox.getNorth() + "," + boundingBox.getEast() + ");node(w)->.x;);out meta;";
 
-		return restOperations.getForObject("http://overpass-api.de/api/interpreter?data={data}", Osm.class, data);
+		return restOperations.getForObject("https://overpass-api.de/api/interpreter?data={data}", Osm.class, data);
 	}
 
 	public Osm getRaw(String query) {
-		return restOperations.getForObject("http://overpass-api.de/api/interpreter?data={data}", Osm.class, query);
+		return restOperations.getForObject("https://overpass-api.de/api/interpreter?data={data}", Osm.class, query);
 	}
 
 	public Osm getBuildings(BoundingBox boundingBox) {
@@ -29,7 +29,7 @@ public class OverpassTemplate implements OverpassOperations {
 
 		System.out.println("Data: " + data);
 
-		return restOperations.getForObject("http://overpass-api.de/api/interpreter?data={data}", Osm.class, data);
+		return restOperations.getForObject("https://overpass-api.de/api/interpreter?data={data}", Osm.class, data);
 	}
 
 }

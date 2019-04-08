@@ -1,18 +1,19 @@
 package org.osmtools.osmchange;
 
-import static org.junit.Assert.*;
+import org.junit.Test;
 
 import java.util.Iterator;
 
-import org.junit.Test;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
 
 public class SequenceIteratorTest {
 
 	@Test
 	public void itShouldIterateSequenceUrls() throws Exception {
 		Iterator<Sequence> it = new SequenceIterator(Granularity.hour, 999, 1001);
-		assertEquals("http://planet.openstreetmap.org/replication/hour/000/001/000.osc.gz", it.next().getUrl());
-		assertEquals("http://planet.openstreetmap.org/replication/hour/000/001/001.osc.gz", it.next().getUrl());
+		assertEquals("https://planet.openstreetmap.org/replication/hour/000/001/000.osc.gz", it.next().getUrl());
+		assertEquals("https://planet.openstreetmap.org/replication/hour/000/001/001.osc.gz", it.next().getUrl());
 		assertFalse(it.hasNext());
 	}
 }

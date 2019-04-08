@@ -5,7 +5,7 @@ import java.util.Iterator;
 
 public class SequenceIterator implements Iterator<Sequence>, Iterable<Sequence> {
 
-	private static final String BASE_STATE_URL = "http://planet.openstreetmap.org/replication/";
+	private static final String BASE_STATE_URL = "https://planet.openstreetmap.org/replication/";
 	private DecimalFormat df = new DecimalFormat("000");
 	private Granularity granularity;
 	private int knownSequence;

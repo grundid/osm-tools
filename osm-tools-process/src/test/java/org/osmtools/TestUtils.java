@@ -16,7 +16,7 @@ public class TestUtils {
 		HttpHeaders responseHeaders = new HttpHeaders();
 		responseHeaders.setContentType(MediaType.APPLICATION_XML);
 		mockServer
-				.expect(RequestMatchers.requestTo("http://planet.openstreetmap.org/replication/" + granularity
+				.expect(RequestMatchers.requestTo("https://planet.openstreetmap.org/replication/" + granularity
 						+ "/state.txt"))
 				.andExpect(RequestMatchers.method(HttpMethod.GET))
 				.andRespond(

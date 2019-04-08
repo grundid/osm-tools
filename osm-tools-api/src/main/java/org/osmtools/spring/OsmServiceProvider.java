@@ -7,9 +7,9 @@ import org.springframework.social.oauth1.OAuth1Template;
 
 public class OsmServiceProvider extends AbstractOAuth1ServiceProvider<OsmOperations> {
 
-	private final static String requestTokenUrl = "http://www.openstreetmap.org/oauth/request_token";
-	private final static String accessTokenUrl = "http://www.openstreetmap.org/oauth/access_token";
-	private final static String authorizeUrl = "http://www.openstreetmap.org/oauth/authorize";
+	private final static String requestTokenUrl = "https://www.openstreetmap.org/oauth/request_token";
+	private final static String accessTokenUrl = "https://www.openstreetmap.org/oauth/access_token";
+	private final static String authorizeUrl = "https://www.openstreetmap.org/oauth/authorize";
 
 	private String osmApiBaseUrl;
 	private OauthCredentials oauthCredentials;
